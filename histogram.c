@@ -14,10 +14,31 @@
 // Challenge: For the astute, try to implement the histogram program where your signal handlers have only 1 line of code (setting a global variable/flag). Even better if you use sigaction instead of signal.
 
 hist_int_t get_max_count(void){
-    //code
+    // finds the most occurrences of any byte
+
+    hist_int_t max_count = 0;
+
+    // checking every element in the histogram array
+    for (int i = 0; i < sizeof(histogram); i++){
+	    if (histogram[i] > max){
+		    max_count = histogram[i];
+	    }
+    }
+
+    return max_count;
 }
 void output_histogram(FILE* destination_stream){
-    //code
+
+	hist_int_t max_count = get_max_count();
+    
+	for (int i = 0; i < sizeof(histogram); i++) {
+		if (histogram[i] == 0) {
+		    fprintf(stdout, "%d %x |", histogram[i], i);
+		} else {
+			// create the string of #
+			fprintf(stdout, "%d %x |%s|", histogram[i], i, 
+		}
+	}
 }
 
 void usr1_handler(int signum){
@@ -53,7 +74,7 @@ void read_file(FILE* fs){
 
     // handling EOF
     if (bytes_read == 0){
-	    //output to stdout and exit
+	    output_histogram(stdout);
     }
 
 }
