@@ -1,5 +1,8 @@
 #include "histogram.h"
-
+#include <signal.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <errno.h>
 // These function prototypes / definitions are suggestions but not required to implement.
 // hist_int_t get_max_count(void)
 // void output_histogram(FILE* destination_stream)
@@ -10,7 +13,86 @@
 // That is to say, feel free to use printf, fprintf, etc. in your signal handlers.
 // Challenge: For the astute, try to implement the histogram program where your signal handlers have only 1 line of code (setting a global variable/flag). Even better if you use sigaction instead of signal.
 
+hist_int_t get_max_count(void){
+    //code
+}
+void output_histogram(FILE* destination_stream){
+    //code
+}
+
+void usr1_handler(int signum){
+    //code
+}
+
+void interrupt_handler(int signum){
+    //code
+}
+
+void exit_handler(int signum){
+    //code
+}
+
+void read_file(FILE* fs){
+    // reading the bytes in stdin
+
+    ssize_t bytes_read;
+    unsigned char buffer[4096]; // buffer storing a chunk of bytes
+
+    // reading 4KB from stdin
+    while((bytes_read = read(fs, buffer, sizeof(buffer))) > 0){
+
+	    // looping through each byte in the current chunk
+	    for (ssize_t i = 0; i < bytes_read; i++) {
+		    
+		    // updating the count for each byte's value in the histogram array
+		    histogram[buffer[i]]++;
+
+	    }
+
+    }
+
+    // handling EOF
+    if (bytes_read == 0){
+	    //output to stdout and exit
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
 int main(void) {
     // TODO: implement the histogram program
+    
+    // initializing a sigaction struct
+    struct sigaction new_act;
+
+    // clearing necessary struct fields so that signals are not masked and have no flags
+    sigemptyset(&new_act.sa_mask);
+    new_act.sa_flags = 0;
+
+    // assigning handlers to their appropriate signals
+
+    // Interrupt signal handling
+    new_act.sa_handler = interrupt_handler;
+    sigaction(SIGINT, &new_act, NULL);
+
+    // USR1 signal handling
+    new_act.sa_handler = user1_handler;
+    sigaction(SIGUSR1, &new_act, NULL);
+
+    // Exit signal handling
+    new_act.sa_handler = exit_handler;
+    sigaction(SIGTERM, &new_act, NULL);
+
+    // reading bytes from stdin and updating the histogram array
+    read_file(stdin);
     return 0;
 }
