@@ -29,15 +29,28 @@ hist_int_t get_max_count(void){
 }
 void output_histogram(FILE* destination_stream){
 
+	//getting the most occurrences of any byte in the histogram
 	hist_int_t max_count = get_max_count();
     
+	// writing a histogram of every byte value and their frequencies
 	for (int i = 0; i < sizeof(histogram); i++) {
-		if (histogram[i] == 0) {
-		    fprintf(stdout, "%d %x |", histogram[i], i);
-		} else {
-			// create the string of #
-			fprintf(stdout, "%d %x |%s|", histogram[i], i, 
+		
+		// printing the information for the current byte, formatting as specified
+
+		fprintf(destination_stream, "%d %x |", histogram[i], i);
+
+		// bar length, proportional to max count and max bar length
+		int bar_length = ( MAX_BAR_WIDTH * histogram[i]) / max_count;
+		
+		if (bar_length > 0){ 
+			for (int k = 0; k < bar_length; k++){
+				fprintf(destination_stream,"#");
+			}
+			fprintf(destination_stream,"|");
 		}
+
+		fprintf(destination_stream, '\n');
+		
 	}
 }
 
@@ -84,11 +97,6 @@ void read_file(FILE* fs){
 
 
 
-
-
-
-
-
 int main(void) {
     // TODO: implement the histogram program
     
@@ -115,5 +123,8 @@ int main(void) {
 
     // reading bytes from stdin and updating the histogram array
     read_file(stdin);
+    
+    // outputting the histogram to stdout
+    output_histogram(stdout)
     return 0;
 }
