@@ -1,0 +1,229 @@
+============================================================
+Simple Tests (1-6): Pipe input, send EOF, check stdout
+============================================================
+Test 1: Simple test - aaa
+  FAILED: Output mismatch
+  DIFF:
+    --- expected_aaa    +++ actual_aaa    @@ -1,256 +1,256 @@    -                   0 0x00 |
+    -                   0 0x01 |
+    -                   0 0x02 |
+    -                   0 0x03 |
+    -                   0 0x04 |
+    -                   0 0x05 |
+    -                   0 0x06 |
+    -                   0 0x07 |
+    -                   0 0x08 |
+    -                   0 0x09 |
+    -                   0 0x0A |
+    -                   0 0x0B |
+    -                   0 0x0C |
+    -                   0 0x0D |
+    -                   0 0x0E |
+    -                   0 0x0F |
+    -                   0 0x10 |
+    ... (495 more lines)
+
+Test 2: Simple test - aaab
+  FAILED: Output mismatch
+  DIFF:
+    --- expected_aaab    +++ actual_aaab    @@ -1,256 +1,256 @@    -                   0 0x00 |
+    -                   0 0x01 |
+    -                   0 0x02 |
+    -                   0 0x03 |
+    -                   0 0x04 |
+    -                   0 0x05 |
+    -                   0 0x06 |
+    -                   0 0x07 |
+    -                   0 0x08 |
+    -                   0 0x09 |
+    -                   0 0x0A |
+    -                   0 0x0B |
+    -                   0 0x0C |
+    -                   0 0x0D |
+    -                   0 0x0E |
+    -                   0 0x0F |
+    -                   0 0x10 |
+    ... (495 more lines)
+
+Test 3: Simple test - abc
+  FAILED: Output mismatch
+  DIFF:
+    --- expected_abc    +++ actual_abc    @@ -1,256 +1,256 @@    -                   0 0x00 |
+    -                   0 0x01 |
+    -                   0 0x02 |
+    -                   0 0x03 |
+    -                   0 0x04 |
+    -                   0 0x05 |
+    -                   0 0x06 |
+    -                   0 0x07 |
+    -                   0 0x08 |
+    -                   0 0x09 |
+    -                   0 0x0A |
+    -                   0 0x0B |
+    -                   0 0x0C |
+    -                   0 0x0D |
+    -                   0 0x0E |
+    -                   0 0x0F |
+    -                   0 0x10 |
+    ... (495 more lines)
+
+Test 4: Simple test - empty
+  FAILED: Output mismatch
+  DIFF:
+    --- expected_empty    +++ actual_empty    @@ -1,256 +1,256 @@    -                   0 0x00 |
+    -                   0 0x01 |
+    -                   0 0x02 |
+    -                   0 0x03 |
+    -                   0 0x04 |
+    -                   0 0x05 |
+    -                   0 0x06 |
+    -                   0 0x07 |
+    -                   0 0x08 |
+    -                   0 0x09 |
+    -                   0 0x0A |
+    -                   0 0x0B |
+    -                   0 0x0C |
+    -                   0 0x0D |
+    -                   0 0x0E |
+    -                   0 0x0F |
+    -                   0 0x10 |
+    ... (495 more lines)
+
+Test 5: Simple test - normaldist
+  FAILED: Output mismatch
+  DIFF:
+    --- expected_normaldist    +++ actual_normaldist    @@ -1,256 +1,256 @@    -                  86 0x00 |####|
+    -                   7 0x01 ||
+    -                   3 0x02 ||
+    -                   6 0x03 ||
+    -                   8 0x04 ||
+    -                  11 0x05 ||
+    -                   4 0x06 ||
+    -                  16 0x07 ||
+    -                  14 0x08 ||
+    -                   6 0x09 ||
+    -                  15 0x0A ||
+    -                  20 0x0B ||
+    -                  20 0x0C ||
+    -                  12 0x0D ||
+    -                  21 0x0E ||
+    -                  21 0x0F ||
+    -                  26 0x10 |#|
+    ... (495 more lines)
+
+Test 6: Simple test - passage
+  FAILED: Output mismatch
+  DIFF:
+    --- expected_passage    +++ actual_passage    @@ -1,256 +1,256 @@    -                   0 0x00 |
+    -                   0 0x01 |
+    -                   0 0x02 |
+    -                   0 0x03 |
+    -                   0 0x04 |
+    -                   0 0x05 |
+    -                   0 0x06 |
+    -                   0 0x07 |
+    -                   0 0x08 |
+    -                   0 0x09 |
+    -                   0 0x0A |
+    -                   0 0x0B |
+    -                   0 0x0C |
+    -                   0 0x0D |
+    -                   0 0x0E |
+    -                   0 0x0F |
+    -                   0 0x10 |
+    ... (495 more lines)
+
+============================================================
+Partial File Dump Tests (7-12): Send half input, send SIGUSR1, check histo.out against partial.out
+============================================================
+Test 7: Partial file dump test - aaa
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 8: Partial file dump test - aaab
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 9: Partial file dump test - abc
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 10: Partial file dump test - empty
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 11: Partial file dump test - normaldist
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 12: Partial file dump test - passage
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+============================================================
+Signal File Dump Tests (13-18): Send input, send SIGUSR1, check histo.out
+============================================================
+Test 13: Signal file dump test - aaa
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 14: Signal file dump test - aaab
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 15: Signal file dump test - abc
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 16: Signal file dump test - empty
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 17: Signal file dump test - normaldist
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+Test 18: Signal file dump test - passage
+  FAILED: Process exited on SIGUSR1 (should continue running)
+
+============================================================
+Signal Termination Tests (19-24): Send full input, send SIGINT/SIGTERM, check histo.out
+============================================================
+Test 19: Signal termination test (SIGINT) - aaa
+  FAILED: Could not read histo.out
+
+Test 20: Signal termination test (SIGTERM) - aaab
+  FAILED: Could not read histo.out
+
+Test 21: Signal termination test (SIGINT) - abc
+  FAILED: Could not read histo.out
+
+Test 22: Signal termination test (SIGTERM) - empty
+  FAILED: Could not read histo.out
+
+Test 23: Signal termination test (SIGINT) - normaldist
+  FAILED: Could not read histo.out
+
+Test 24: Signal termination test (SIGTERM) - passage
+  FAILED: Could not read histo.out
+
+-------------------Summary-------------------
+Total tests: 24
+Total tests passed: 0
+Total tests failed: 24
+--------------------------------
+Test 1 (Simple test 1) failed
+Test 2 (Simple test 2) failed
+Test 3 (Simple test 3) failed
+Test 4 (Simple test 4) failed
+Test 5 (Simple test 5) failed
+Test 6 (Simple test 6) failed
+Test 7 (Partial file dump test 7) failed
+Test 8 (Partial file dump test 8) failed
+Test 9 (Partial file dump test 9) failed
+Test 10 (Partial file dump test 10) failed
+Test 11 (Partial file dump test 11) failed
+Test 12 (Partial file dump test 12) failed
+Test 13 (Signal file dump test 13) failed
+Test 14 (Signal file dump test 14) failed
+Test 15 (Signal file dump test 15) failed
+Test 16 (Signal file dump test 16) failed
+Test 17 (Signal file dump test 17) failed
+Test 18 (Signal file dump test 18) failed
+Test 19 (Signal termination test (SIGINT) 19) failed
+Test 20 (Signal termination test (SIGTERM) 20) failed
+Test 21 (Signal termination test (SIGINT) 21) failed
+Test 22 (Signal termination test (SIGTERM) 22) failed
+Test 23 (Signal termination test (SIGINT) 23) failed
+Test 24 (Signal termination test (SIGTERM) 24) failed
+Total tests passed: 0
+points for correctness: 0.00/23, please read the document for more details.
