@@ -1,3 +1,10 @@
+# Overview
+One of my projects for my Systems Programming course. See project details & description below
+Counts byte values in an input and outputs a histogram modeling the results.
+
+Source code in histogram.c
+
+
 # histogram Programming Assignment
 
 In this assignment, you are going to implement your own CLI program called `histogram` which utilizes signal handling, file I/O, and continuous input processing in C and Linux/Unix. You'll get experience using signal handlers, file descriptors or streams, byte-level I/O, and error handling.
